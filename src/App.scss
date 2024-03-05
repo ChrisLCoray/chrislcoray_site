@@ -1,0 +1,189 @@
+/* Theme Color overrides */
+$primary: #800080;
+$secondary: #CCC;
+$light: #efefef;
+$dark: #333;
+$darker: #030303;
+$lightPurple: #c300c3;
+
+/* Other vars */
+$headerHeight: 50px;
+$footerHeight: 50px;
+$navHeight: 54px;
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+
+    h1,
+    h2,
+    h3,
+    .display-text {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        text-transform: uppercase;
+        margin: 1rem 0;
+    }
+
+    .App {
+        background-color: $light;
+        height: 100vh;
+        text-align: left;
+
+        a {
+            color: $primary;
+            padding: 2px;
+        }
+
+        a:hover {
+            background-color: $primary;
+            color: white;
+        }
+
+        header {
+            background: $darker;
+            height: $headerHeight;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            h2 {
+                color: $primary;
+                font-size: 2rem;
+                font-family: 'Silkscreen', 'Open Sans', sans-serif;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        footer {
+            background-color: $darker;
+            color: $light;
+            display: flex;
+            justify-content: center;
+            height: $footerHeight;
+            padding: .75rem 0;
+            width: 100%;
+
+            span {
+                font-size: 1.25rem;
+            }
+        }
+
+        nav {
+            background-color: $primary;
+            height: $navHeight;
+
+            ul li {
+                text-transform: uppercase;
+                vertical-align: middle;
+
+                a.nav-link {
+                    color: $light;
+
+                    &:hover {
+                        background-color: $secondary;
+                        color: $primary;
+                    }
+
+                    &.active {
+                        color: $secondary !important;
+                        border-bottom: 1px solid $secondary;
+                    }
+
+                    .material-symbols-outlined {
+                        vertical-align: bottom;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        section {
+            height: calc(100vh - $headerHeight - $navHeight - $footerHeight);
+            overflow-y: auto;
+        }
+
+        button.toggle-button {
+            background-color: $light;
+            border: none;
+            border-radius: 10px;
+            color: #030303;
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            height: 34px;
+        }
+
+        h4 span.material-symbols-outlined {
+            font-size: inherit;
+            margin: -0.35rem 0.5rem 0 0;
+            vertical-align: middle;
+        }
+
+        .portfolio-container .container-fluid {
+            div.row {
+                margin-bottom: 1rem;
+
+                &.header-row {
+                    border-bottom: 1px solid $darker;
+                }
+            }
+
+            img.thumbnail {
+                width: 100%;
+            }
+        }
+
+
+        /** Dark Mode overrides **/
+        &.dark-mode {
+            background-color: $dark;
+            color: $light;
+
+            a {
+                color: $lightPurple;
+            }
+
+            a:hover {
+                background-color: $lightPurple;
+                color: $secondary;
+            }
+
+            nav {
+                background-color: #600060;
+            }
+
+            button.toggle-button {
+                background-color: #333;
+                color: #efefef;
+            }
+        }
+    }
+}
+
+/** Mobile breakpoints **/
+@media(max-width: 600px) {
+    body {
+        .App {
+            header {
+                h2 {
+                    font-size: 1.5rem;
+                }
+
+                img {
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+}
