@@ -9,7 +9,7 @@ $lightPurple: #c300c3;
 /* Other vars */
 $headerHeight: 50px;
 $footerHeight: 50px;
-$navHeight: 54px;
+$navHeight: 56px;
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -83,26 +83,36 @@ body {
             background-color: $primary;
             height: $navHeight;
 
-            ul li {
+            #navbar-toggle {
+                margin-left: 0.5rem;
+            }
+
+            .nav-item {
+                background-color: $primary;
+                height: $navHeight;
                 text-transform: uppercase;
                 vertical-align: middle;
 
-                a.nav-link {
+                .nav-link {
                     color: $light;
+                    cursor: pointer;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
 
-                    &:hover {
+                    &:hover,
+                    &.active {
                         background-color: $secondary;
                         color: $primary;
                     }
 
                     &.active {
-                        color: $secondary !important;
-                        border-bottom: 1px solid $secondary;
+                        border-bottom: 4px solid $dark;
+                        padding-bottom: calc(1rem - 4px);
                     }
 
                     .material-symbols-outlined {
-                        vertical-align: bottom;
                         margin-right: 0.5rem;
+                        vertical-align: bottom;
                     }
                 }
             }
@@ -113,15 +123,19 @@ body {
             overflow-y: auto;
         }
 
-        button.toggle-button {
+        button#toggle-theme {
             background-color: $light;
             border: none;
             border-radius: 10px;
             color: #030303;
             cursor: pointer;
+            height: 34px;
+            width: 34px;
+            position: absolute;
+            top: calc($headerHeight + 12px);
+            right: 1rem;
             padding: 5px;
             text-align: center;
-            height: 34px;
         }
 
         h4 span.material-symbols-outlined {
@@ -163,7 +177,7 @@ body {
                 background-color: #600060;
             }
 
-            button.toggle-button {
+            button#toggle-theme {
                 background-color: #333;
                 color: #efefef;
             }
@@ -172,7 +186,7 @@ body {
 }
 
 /** Mobile breakpoints **/
-@media(max-width: 600px) {
+@media (max-width: 767.98px) {
     body {
         .App {
             header {
@@ -182,6 +196,22 @@ body {
 
                 img {
                     margin-left: 1rem;
+                }
+            }
+
+            nav {
+                .navbar-toggler {
+                    border-color: $light;
+                    margin-bottom: 0.5rem;
+                }
+
+                .nav-item {
+                    .nav-link {
+                        &.active {
+                            border-bottom: none;
+                            padding-bottom: 1rem;
+                        }
+                    }
                 }
             }
         }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import './App.scss';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -10,6 +12,7 @@ import Footer from './components/Footer';
 
 export default function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const [navExpanded, setNavExpanded] = useState(false);
 
     function toggleLightDark() {
         setIsDarkMode(!isDarkMode)
@@ -18,47 +21,43 @@ export default function App() {
     return (
         <div className={"App " + (isDarkMode ? `dark-mode` : ``)}>
             <Header />
-            <nav className="navbar navbar-expand-lg navbar-light">
-                <div className="container-fluid">
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapsible" aria-controls="navbarCollapsible" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarCollapsible">
-                        <ul className="navbar-nav me-auto">
-                            <li className="nav-item">
-                                <Link to={'/'} className="nav-link" aria-current="page">
-                                    <span className="material-symbols-outlined">home</span>
-                                    <span className="nav-text">Home</span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/resume'} className="nav-link">
-                                    <span className="material-symbols-outlined">description</span>
-                                    <span className="nav-text">Resume</span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/portfolio'} className="nav-link">
-                                    <span className="material-symbols-outlined">wall_art</span>
-                                    <span className="nav-text">Portfolio</span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/contact'} className="nav-link">
-                                    <span className="material-symbols-outlined">alternate_email</span>
-                                    <span className="nav-text">Contact</span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <button className="toggle-button" onClick={toggleLightDark}>
-                        {
-                            isDarkMode ? <span className="material-symbols-outlined">dark_mode</span>
-                                : <span className="material-symbols-outlined">light_mode</span>
-                        }
-                    </button>
-                </div>
-            </nav>
+            <Navbar expanded={navExpanded} expand="sm" className="bg-body-primary">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbar-toggle" data-bs-theme="dark" onClick={() => setNavExpanded(!navExpanded)} />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Item>
+                            <Link to={'/'} className="nav-link" onClick={() => setNavExpanded(false)}>
+                                <span className="material-symbols-outlined">home</span>
+                                <span className="nav-text">Home</span>
+                            </Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Link to={'/resume'} className="nav-link" onClick={() => setNavExpanded(false)}>
+                                <span className="material-symbols-outlined">description</span>
+                                <span className="nav-text">Resume</span>
+                            </Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Link to={'/portfolio'} className="nav-link" onClick={() => setNavExpanded(false)}>
+                                <span className="material-symbols-outlined">wall_art</span>
+                                <span className="nav-text">Portfolio</span>
+                            </Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Link to={'/contact'} className="nav-link" onClick={() => setNavExpanded(false)}>
+                                <span className="material-symbols-outlined">alternate_email</span>
+                                <span className="nav-text">Contact</span>
+                            </Link>
+                        </Nav.Item>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+            <button id="toggle-theme" className="toggle-button" onClick={toggleLightDark}>
+                {
+                    isDarkMode ? <span className="material-symbols-outlined">dark_mode</span>
+                        : <span className="material-symbols-outlined">light_mode</span>
+                }
+            </button>
             <main>
                 <Routes>
                     <Route path='*' element={<Home />} />

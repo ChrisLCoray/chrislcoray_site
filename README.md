@@ -9,8 +9,7 @@ You can always check out the package.json, but for a quick-glance under the hood
 
 * React 18.2.0 - Meta's frontend library for building apps
 * Bootstrap 5.3.3 - Bootstrap is a SCSS lib for creating uniform components and forms
-* Luxon 3.4.3 - DateTime JavaScript Library, I only ended up using it in one place so I'm planning to remove
-* React-bootstrap 2.10.1 - Allows Bootstrap to be used on top of React
+* React-bootstrap 2.10.1 - Allows Bootstrap to be used on top of React with native-style components
 * React-dom 18.2.0 - React pkg for working with DOM elements
 * React-router-dom 6.22.2 - React routing, allows the app to flow like a website with routes and pages
 * React-scripts 5.0.1 - Config scrips for Create-React-App. I think I used it to generate a few components a few years ago, but these days I just create from scratch.

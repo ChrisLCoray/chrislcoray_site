@@ -1,11 +1,9 @@
-import { DateTime } from 'luxon';
-
 export default function Footer() {
-    var now = DateTime.now();
+    const d = new Date();
 
     return (
         <footer className="App-footer display-text">
-            <span>&copy; Chris L. Coray {now.toLocaleString({ year: 'numeric' })}</span>
+            <span>&copy; Chris L. Coray {d.getFullYear()}</span>
         </footer>
     );
 }
