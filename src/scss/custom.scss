@@ -1,0 +1,20 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+/* Theme Color overrides */
+$primary: #800080; // rgb(128, 0, 128)
+$secondary: #CCCCCC; // rgb(204, 204, 204)
+$light: #efefef; // rgb(239, 239, 239)
+$dark: #333; // rgb(51, 51, 51)
+$darker: #030303; // rgb(3, 3, 3)
+$lightPurple: #d200d2; // rgb(210, 0, 210)
+$info: $lightPurple;
+
+$accordion-button-focus-border-color: $primary;
+$accordion-button-focus-box-shadow: 0 0 0 0.25rem rgba(210, 0, 210, 0.5);
+$accordion-button-active-bg: $primary;
+$accordion-button-active-color: $secondary;
+$accordion-icon-active-color: $secondary;
+
+$accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='#{$secondary}' stroke-linecap='round' stroke-linejoin='round'><path d='M2 5L8 11L14 5'/></svg>");
+
+@import "../node_modules/bootstrap/scss/bootstrap";

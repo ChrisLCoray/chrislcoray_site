@@ -3,6 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './App.scss';
+import FourOhFour from './components/404';
 import Header from './components/Header';
 import Home from './components/Home';
 import Contact from './components/Contact';
@@ -60,10 +61,11 @@ export default function App() {
             </button>
             <main>
                 <Routes>
-                    <Route path='*' element={<Home />} />
-                    <Route exact path='/resume' element={<Resume />} />
-                    <Route exact path='/portfolio' element={<Portfolio />} />
-                    <Route exact path='/contact' element={<Contact />} />
+                    <Route exact path='/' element={<Home />} />
+                    <Route path='/resume' element={<Resume />} />
+                    <Route path='/portfolio' element={<Portfolio />} />
+                    <Route path='/contact' element={<Contact />} />
+                    <Route path='*' element={<FourOhFour />} />
                 </Routes>
             </main>
             <Footer />

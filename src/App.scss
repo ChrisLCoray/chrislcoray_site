@@ -1,10 +1,4 @@
-/* Theme Color overrides */
-$primary: #800080;
-$secondary: #CCC;
-$light: #efefef;
-$dark: #333;
-$darker: #030303;
-$lightPurple: #c300c3;
+@import './scss/custom.scss';
 
 /* Other vars */
 $headerHeight: 50px;
@@ -144,20 +138,34 @@ body {
             vertical-align: middle;
         }
 
-        .portfolio-container .container-fluid {
+        .portfolio-container {
             div.row {
                 margin-bottom: 1rem;
-
-                &.header-row {
-                    border-bottom: 1px solid $darker;
-                }
             }
 
             img.thumbnail {
+                cursor: pointer;
+                max-width: 150px;
                 width: 100%;
             }
-        }
 
+            .accordion {
+                h2.accordion-header {
+                    margin: 0;
+
+                    // --bs-accordion-active-bg: #800080;
+                    // --bs-accordion-active-color: #CCC;
+
+                    // .accordion-button::after {
+                    //     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'><path d='M2 5L8 11L14 5'/></svg>");
+                    // }
+
+                    // .accordion-button.collapsed::after {
+                    //     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='M2 5L8 11L14 5'/></svg>");
+                    // }
+                }
+            }
+        }
 
         /** Dark Mode overrides **/
         &.dark-mode {
@@ -173,16 +181,17 @@ body {
                 color: $secondary;
             }
 
-            nav {
-                background-color: #600060;
-            }
-
             button#toggle-theme {
                 background-color: #333;
                 color: #efefef;
             }
         }
     }
+}
+
+// modals get rendered outside of .App
+#portfolio-modal img.screenshot-full {
+    max-width: 100%;
 }
 
 /** Mobile breakpoints **/
