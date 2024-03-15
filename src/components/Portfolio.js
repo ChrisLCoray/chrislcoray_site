@@ -3,10 +3,12 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import hackerFull from '../images/portfolio/hackergame_full.png';
-import hackerThumb from '../images/portfolio/hackergame_thumb.png';
 import chrislcorayThumb from '../images/portfolio/chrislcoray_thumb.png';
 import chrislcorayFull from '../images/portfolio/chrislcoray_full.png';
+import hackerFull from '../images/portfolio/hackergame_full.png';
+import hackerThumb from '../images/portfolio/hackergame_thumb.png';
+import threeJsDemoFull from '../images/portfolio/threejsdemo_full.png';
+import threeJsDemoThumb from '../images/portfolio/threejsdemo_thumb.png';
 import vtmThumb from '../images/portfolio/vtm5etools_thumb.png';
 import vtmFull from '../images/portfolio/vtm5etools_full.png';
 
@@ -34,6 +36,14 @@ export default function Portfolio() {
             description: `Small game based on Fallout 4's hacking mini-game by Bethesda Softworks, re-created in ReactJS. Note: Requires a mouse, only somewhat playable on mobile in Horizontal view and hasn't been optimized.`,
             code: 'https://github.com/ChrisLCoray/hackergame',
             link: 'https://hackergame.chrislcoray.com/'
+        },
+        {
+            name: 'ThreeJS Demo "Cube Builder"',
+            thumb_image: threeJsDemoThumb,
+            full_image: threeJsDemoFull,
+            description: `Demo app written in ThreeJS on ViteJS platform. The idea is the ability to add 3D objects (cubes, to keep it simple) to a scene and then edit them with real-time feedback. Works best on desktop/laptop, but I tried to format controls and mobile view to make it as usable as possible on mobile-landscape views.`,
+            code: 'https://github.com/ChrisLCoray/threejs-cube-builder',
+            link: 'https://cube-builder.chrislcoray.com/'
         },
         {
             name: 'VtM 5e Tools',
