@@ -167,6 +167,16 @@ body {
             }
         }
 
+        #contact-form {
+            position: relative;
+
+            .chameleon {
+                position: absolute;
+                top: -100000px;
+                left: -100000px;
+            }
+        }
+
         /** Dark Mode overrides **/
         &.dark-mode {
             background-color: $dark;
@@ -190,8 +200,13 @@ body {
 }
 
 // modals get rendered outside of .App
-#portfolio-modal img.screenshot-full {
-    max-width: 100%;
+#portfolio-modal {
+    img.screenshot-full {
+        align-self: center;
+        display: flex;
+        height: 100%;
+        margin: 0 auto;
+    }
 }
 
 /** Mobile breakpoints **/
