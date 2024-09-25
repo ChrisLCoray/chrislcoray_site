@@ -174,7 +174,7 @@ export default function Portfolio() {
             link: '',
             techs: ['Lit', 'Material Design']
         },
-    ];
+    ]
 
     const appPortfolioRows = portfolioData.map((p, i) =>
         <Accordion key={`appPf-${i}`} className="mb-3">
@@ -207,7 +207,7 @@ export default function Portfolio() {
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
-    );
+    )
 
     const renderedPortfolioRows = digitalImages.map((img, i) =>
         <Col key={`dpfImg-${i}`} xs={6} md={3} className="mb-3">
@@ -228,26 +228,45 @@ export default function Portfolio() {
                 thumbnail />
         </Col>
     )
+
+    const artBlob = <>
+        <h4>Digital Modeling&mdash;Works in Progress (Blender, Photoshop)</h4>
+        <Container>
+            <Row className="mb-3">
+                {renderedPortfolioRows}
+            </Row>
+        </Container>
+    </>
+
+    const codeBlob = <>
+        <h4>Applications/Software</h4>
+        {appPortfolioRows}
+    </>
+
+    const photoBlob = <>
+        <h4>Photography</h4>
+        <Container>
+            <Row className="mb-3">
+                {imgPortfolioRows}
+            </Row>
+        </Container>
+    </>
+
+    const j = localStorage.getItem('j');
+    const loadArray = (j && j !== undefined) ?
+        (j === 'coder') ? [codeBlob, artBlob, photoBlob]
+            : [photoBlob, codeBlob, artBlob]
+        : [photoBlob, codeBlob, artBlob]
+
+    const loadOrder = loadArray.map((c, i) =>
+        <div className="blob" key={`blob-${i}`}>{c}</div>
+    )
+
     return (
         <section className="portfolio-container container-fluid mb-3">
             <h2>Portfolio</h2>
 
-            <h4>Photography</h4>
-            <Container>
-                <Row className="mb-3">
-                    {imgPortfolioRows}
-                </Row>
-            </Container>
-
-            <h4>Digital Modeling&mdash;Works in Progress (Blender, Photoshop)</h4>
-            <Container>
-                <Row className="mb-3">
-                    {renderedPortfolioRows}
-                </Row>
-            </Container>
-
-            <h4>Applications/Software</h4>
-            {appPortfolioRows}
+            {loadOrder}
 
             <Modal id="portfolio-modal" show={showModal} fullscreen={true} onHide={handleClose}>
                 <Modal.Header closeButton>

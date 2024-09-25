@@ -73,6 +73,10 @@ body {
             }
         }
 
+        main {
+            padding: 0 2rem;
+        }
+
         nav {
             background-color: $primary;
             height: $navHeight;
@@ -115,6 +119,10 @@ body {
         section {
             height: calc(100vh - $headerHeight - $navHeight - $footerHeight);
             overflow-y: auto;
+
+            .blob {
+                margin-bottom: 3rem;
+            }
         }
 
         button#toggle-theme {
