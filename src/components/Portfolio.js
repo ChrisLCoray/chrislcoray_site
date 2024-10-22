@@ -48,6 +48,9 @@ import pf8Thumb from '../images/portfolio/pf_8_thumb.png';
 import pf9 from '../images/portfolio/pf_9.jpg';
 import pf9Thumb from '../images/portfolio/pf_9_thumb.png';
 
+import iYVLt25ub2A_thumb from '../images/portfolio/iYVLt25ub2A_thumb.png';
+import FMjxZEIfLK0_thumb from '../images/portfolio/FMjxZEIfLK0_thumb.png';
+
 export default function Portfolio() {
     const [showModal, setShowModal] = useState(false);
     const [modalTitle, setModalTitle] = useState(undefined);
@@ -176,6 +179,22 @@ export default function Portfolio() {
         },
     ]
 
+    const videoData = [
+        {
+            id: 'iYVLt25ub2A',
+            thumb: iYVLt25ub2A_thumb,
+            title: 'Monty Python-inspired jQuery/CSS animation circa 2013',
+            desc: `This animation for Timpanogus Storyteller Festival was inspired by the clip-art style animation of Monty Python, written in jQuery and CSS. The client loved it, and EKR used it as an example of "what is possible" with other clients for a little while after.`
+        },
+        {
+            id: 'FMjxZEIfLK0',
+            thumb: FMjxZEIfLK0_thumb,
+            title: 'Haunted Shenanigans Oct 2021',
+            desc: `This is a brief video I made by combining Nest cam footage, editing out the kids' faces, and adding some filters, background music, and sound effects. It's not a cinematic masterpiece, but it was a fun project. Video software was Vegas Movie Studio 13.`
+        }
+    ]
+    // https://youtu.be/FMjxZEIfLK0
+
     const appPortfolioRows = portfolioData.map((p, i) =>
         <Accordion key={`appPf-${i}`} className="mb-3">
             <Accordion.Item eventKey={i}>
@@ -203,6 +222,28 @@ export default function Portfolio() {
                     <div className="row row-cols-2">
                         <div className="col-4"><strong>Link:</strong></div>
                         <div className="col-8">{(p.link) ? <a href={p.link} target="_blank" rel="noreferrer">{p.link}</a> : "N/A"}</div>
+                    </div>
+                </Accordion.Body>
+            </Accordion.Item>
+        </Accordion>
+    )
+
+    const videoPortRows = videoData.map((vid, i) =>
+        <Accordion key={`vidPf-${i}`} className="mb-3">
+            <Accordion.Item eventKey={i}>
+                <Accordion.Header>
+                    {vid.title}
+                </Accordion.Header>
+                <Accordion.Body>
+                    <div className="row row-cols-2 mb-2">
+                        <div className="col-2">
+                            <a href={`https://youtu.be/${vid.id}`} target="_blank" rel="noreferrer">
+                                <img src={vid.thumb} className="thumbnail" alt={`Thumbnail of ${vid.title} project`} />
+                            </a>
+                        </div>
+                        <div className="col-10">
+                            {vid.desc}
+                        </div>
                     </div>
                 </Accordion.Body>
             </Accordion.Item>
@@ -252,11 +293,16 @@ export default function Portfolio() {
         </Container>
     </>
 
+    const videoBlob = <>
+        <h4>Videos</h4>
+        {videoPortRows}
+    </>
+
     const j = localStorage.getItem('j');
     const loadArray = (j && j !== undefined) ?
-        (j === 'coder') ? [codeBlob, artBlob, photoBlob]
-            : [photoBlob, codeBlob, artBlob]
-        : [photoBlob, codeBlob, artBlob]
+        (j === 'coder') ? [codeBlob, artBlob, photoBlob, videoBlob]
+            : [photoBlob, videoBlob, codeBlob, artBlob]
+        : [photoBlob, videoBlob, codeBlob, artBlob]
 
     const loadOrder = loadArray.map((c, i) =>
         <div className="blob" key={`blob-${i}`}>{c}</div>
