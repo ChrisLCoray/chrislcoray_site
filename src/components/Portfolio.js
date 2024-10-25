@@ -195,6 +195,21 @@ export default function Portfolio() {
     ]
     // https://youtu.be/FMjxZEIfLK0
 
+    const writingData = [
+        {
+            title: `Combating Misinformation in the Digital Age`,
+            topics: `Misinformation, Social Media, Fake News, Critical Thinking`,
+            platform: `Medium`,
+            link: `https://medium.com/@chriscoraywrites/combating-misinformation-in-the-digital-age-bb85ac11b399`
+        },
+        {
+            title: `Bookshelf to Boardroom: Business Reads That Shaped Me`,
+            topics: `Business, Marketing, Reading`,
+            platform: `Medium`,
+            link: `https://medium.com/@chriscoraywrites/bookshelf-to-boardroom-business-reads-that-shaped-me-6a6ee9950a80`
+        },
+    ]
+
     const appPortfolioRows = portfolioData.map((p, i) =>
         <Accordion key={`appPf-${i}`} className="mb-3">
             <Accordion.Item eventKey={i}>
@@ -250,6 +265,16 @@ export default function Portfolio() {
         </Accordion>
     )
 
+    const writingRows = writingData.map((article, i) =>
+        <Row key={`writing-row-${i}`}>
+            <Col xs={6} md={6}>
+                <a href={article.link} target="_blank">{article.title}</a>
+            </Col>
+            <Col xs={6} md={3}>{article.topics}</Col>
+            <Col xs={6} md={3}>{article.platform}</Col>
+        </Row>
+    )
+
     const renderedPortfolioRows = digitalImages.map((img, i) =>
         <Col key={`dpfImg-${i}`} xs={6} md={3} className="mb-3">
             <Image
@@ -298,11 +323,24 @@ export default function Portfolio() {
         {videoPortRows}
     </>
 
+    const writingBlob = <>
+        <h4>Writing</h4>
+        <Container>
+            <Row>
+                <Col xs={6} md={6}><strong>Title</strong></Col>
+                <Col xs={6} md={3}><strong>Topics</strong></Col>
+                <Col xs={6} md={3}><strong>Platform</strong></Col>
+            </Row>
+            {writingRows}
+        </Container>
+    </>
+
     const j = localStorage.getItem('j');
     const loadArray = (j && j !== undefined) ?
-        (j === 'coder') ? [codeBlob, artBlob, photoBlob, videoBlob]
-            : [photoBlob, videoBlob, codeBlob, artBlob]
-        : [photoBlob, videoBlob, codeBlob, artBlob]
+        (j === 'coder') ? [codeBlob, writingBlob, artBlob, photoBlob, videoBlob]
+            : (j === 'writer') ? [writingBlob, photoBlob, artBlob, codeBlob]
+                : [photoBlob, writingBlob, videoBlob, codeBlob, artBlob]
+        : [photoBlob, writingBlob, videoBlob, codeBlob, artBlob]
 
     const loadOrder = loadArray.map((c, i) =>
         <div className="blob" key={`blob-${i}`}>{c}</div>

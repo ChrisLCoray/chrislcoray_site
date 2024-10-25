@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import './App.scss';
-import FourOhFour from './components/404';
-import Header from './components/Header';
-import Home from './components/Home';
-import Contact from './components/Contact';
-import Portfolio from './components/Portfolio';
-import Resume from './components/Resume';
-import Footer from './components/Footer';
+import React, { useState } from 'react'
+import { Link, Route, Routes } from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import './App.scss'
+import FourOhFour from './components/404'
+import Header from './components/Header'
+import Home from './components/Home'
+import Contact from './components/Contact'
+import Portfolio from './components/Portfolio'
+import Resume from './components/Resume'
+import Footer from './components/Footer'
 
 export default function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);

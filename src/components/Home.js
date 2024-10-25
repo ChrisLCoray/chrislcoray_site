@@ -1,8 +1,25 @@
+import React, { useState } from 'react'
+
 export default function Home() {
+    const [loadOrder, setLoadOrder] = useState([])
 
     let queryArray = window.location.search.replace(`?`, ``).split(/&/g)
     let queryObj = {}
     queryArray.forEach(q => { const qS = q.split(/=/); queryObj[qS[0]] = qS[1]; localStorage.setItem(qS[0], qS[1]) })
+
+    const artBlob = <>
+        <h4><span className="material-symbols-outlined">view_in_ar</span>3D Artist/Programmer</h4>
+        <p>I grew up doing traditional media art as a kid - graphite and colored pencil, oil painting - and when I entered college, I started as an art student wanting to do 2D and 3D graphics for games, movies, etc. I ended up switching majors, but it's still something I enjoy doing in my spare time, as well as incorporating into my career when I can.</p>
+        <p>More recently, with WebGPU being rolled out and companies like Meta, Google, Microsoft, and Amazon have begun playing in AR spaces, I decided it was time to start re-building my 3D skills. I am a firm believer that when the market catches on to the power that AR can provide their applications, JavaScript developers with those skills will be in high demand.</p>
+        <p>Part of that process has been re-learning Blender, the defacto open source software for creating 3D graphics and animations, and some of that time has been spent learning the in-software coding system for Meta's Metaverse.</p>
+    </>
+
+    // @TODO: Finish the "business blob" for non-marketing business jobs
+    const businessBlob = <>
+        <h4><span className="material-symbols-outlined">business_center</span>Business &amp; Management</h4>
+        <p>I got my degree in Marketing, which at the time was basically a Business Management degree with one course swap.</p>
+        <p>During that time, I worked in a variety of jobs. I worked in construction retail for a little over three years...</p>
+    </>
 
     const coderBlob = <>
         <h4><span className="material-symbols-outlined">devices</span>Application Engineer</h4>
@@ -10,13 +27,6 @@ export default function Home() {
         <p>For more information on my work history/professional career, check out my <a href="/resume">resume</a> and
             <a href="https://www.linkedin.com/in/chrislcoray/" target="_blank" rel="noreferrer">LinkedIn profile</a>, and check out my <a href="/portfolio">portfolio</a> page to view samples of my coding projects at <a href="https://github.com/ChrisLCoray/" target="_blank" rel="noreferrer">GitHub</a>.
         </p>
-    </>
-
-    const artBlob = <>
-        <h4><span className="material-symbols-outlined">view_in_ar</span>3D Artist/Programmer</h4>
-        <p>I grew up doing traditional media art as a kid - graphite and colored pencil, oil painting - and when I entered college, I started as an art student wanting to do 2D and 3D graphics for games, movies, etc. I ended up switching majors, but it's still something I enjoy doing in my spare time, as well as incorporating into my career when I can.</p>
-        <p>More recently, with WebGPU being rolled out and companies like Meta, Google, Microsoft, and Amazon have begun playing in AR spaces, I decided it was time to start re-building my 3D skills. I am a firm believer that when the market catches on to the power that AR can provide their applications, JavaScript developers with those skills will be in high demand.</p>
-        <p>Part of that process has been re-learning Blender, the defacto open source software for creating 3D graphics and animations, and some of that time has been spent learning the in-software coding system for Meta's Metaverse.</p>
     </>
 
     const marketingBlob = <>
@@ -34,15 +44,22 @@ export default function Home() {
             <a href="https://www.wattpad.com/95118442-under-umber-seas-preview-chapter-1" target="_blank" rel="noreferrer">Wattpad</a>), a Steampunk/Alt History Speculative Fiction novel set in a post-apocalyptic Europe, where humanity has taken to the skies for survival.</p>
     </>
 
-    const loadArray = (queryObj && queryObj.j) ?
-        (queryObj.j === 'coder') ? [coderBlob, artBlob, marketingBlob, writerBlob]
-            : (queryObj.j === 'writer') ? [writerBlob, marketingBlob, artBlob, coderBlob]
+    const j = (localStorage.getItem('j')) ? localStorage.getItem('j')
+        : (queryObj && queryObj.j) ? queryObj.j
+            : undefined
+
+    const loadArray = (j) ?
+        (j === 'coder') ? [coderBlob, artBlob, marketingBlob, writerBlob]
+            : (j === 'writer') ? [writerBlob, marketingBlob, artBlob, coderBlob]
                 : [marketingBlob, writerBlob, artBlob, coderBlob]
         : [marketingBlob, writerBlob, artBlob, coderBlob]
 
-    const loadOrder = loadArray.map((c, i) =>
-        <div className="blob" key={`blob-${i}`}>{c}</div>
-    )
+    if (loadOrder.length < 1) {
+        const newLoadOrder = loadArray.map((c, i) =>
+            <div className="blob" key={`blob-${i}`}>{c}</div>
+        )
+        setLoadOrder(newLoadOrder)
+    }
 
     return (
         <section className="home-container container-fluid">
